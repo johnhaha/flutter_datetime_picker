@@ -1,3 +1,5 @@
+import 'dart:io';
+
 enum LocaleType {
   en,
   fa,
@@ -35,7 +37,43 @@ enum LocaleType {
   tw,
   fi,
   uk,
-  he
+  he;
+
+  static LocaleType get currentLocaleType {
+    var currentLocale = Platform.localeName;
+    return switch (currentLocale) {
+      _ when currentLocale.contains('en') => LocaleType.en,
+      _ when currentLocale.contains('fa') => LocaleType.fa,
+      _ when currentLocale.contains('zh') => LocaleType.zh,
+      _ when currentLocale.contains('nl') => LocaleType.nl,
+      _ when currentLocale.contains('ru') => LocaleType.ru,
+      _ when currentLocale.contains('it') => LocaleType.it,
+      _ when currentLocale.contains('fr') => LocaleType.fr,
+      _ when currentLocale.contains('gr') => LocaleType.gr,
+      _ when currentLocale.contains('es') => LocaleType.es,
+      _ when currentLocale.contains('pl') => LocaleType.pl,
+      _ when currentLocale.contains('pt') => LocaleType.pt,
+      _ when currentLocale.contains('kk') => LocaleType.kk,
+      _ when currentLocale.contains('ar') => LocaleType.ar,
+      _ when currentLocale.contains('tr') => LocaleType.tr,
+      _ when currentLocale.contains('az') => LocaleType.az,
+      _ when currentLocale.contains('jp') => LocaleType.jp,
+      _ when currentLocale.contains('de') => LocaleType.de,
+      _ when currentLocale.contains('da') => LocaleType.da,
+      _ when currentLocale.contains('mn') => LocaleType.mn,
+      _ when currentLocale.contains('bn') => LocaleType.bn,
+      _ when currentLocale.contains('vi') => LocaleType.vi,
+      _ when currentLocale.contains('hy') => LocaleType.hy,
+      _ when currentLocale.contains('id') => LocaleType.id,
+      _ when currentLocale.contains('bg') => LocaleType.bg,
+      _ when currentLocale.contains('eu') => LocaleType.eu,
+      _ when currentLocale.contains('cat') => LocaleType.cat,
+      _ when currentLocale.contains('th') => LocaleType.th,
+      _ when currentLocale.contains('si') => LocaleType.si,
+      _ when currentLocale.contains('no') => LocaleType.no,
+      _ => LocaleType.en,
+    };
+  }
 }
 
 final _i18nModel = <LocaleType, Map<String, Object>>{
